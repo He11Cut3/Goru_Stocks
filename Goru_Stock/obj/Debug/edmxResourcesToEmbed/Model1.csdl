@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GoruModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Goru_Admission">
+    <Key>
+      <PropertyRef Name="Goru_Admission_Id" />
+    </Key>
+    <Property Name="Goru_Admission_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Goru_Admission_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goru_Admission_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goru_Admission_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goru_Admission_Box" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Goru_Main" Relationship="Self.FK_Goru_Main_Goru_Admission" FromRole="Goru_Admission" ToRole="Goru_Main" />
+  </EntityType>
+  <EntityType Name="Goru_Main">
+    <Key>
+      <PropertyRef Name="Goru_Main_Id" />
+    </Key>
+    <Property Name="Goru_Main_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Goru_Stocks_Id" Type="Int32" />
+    <Property Name="Goru_Shipment_Id" Type="Int32" />
+    <Property Name="Goru_Admission_Id" Type="Int32" />
+    <Property Name="Goru_Provider_Id" Type="Int32" />
+    <NavigationProperty Name="Goru_Admission" Relationship="Self.FK_Goru_Main_Goru_Admission" FromRole="Goru_Main" ToRole="Goru_Admission" />
+    <NavigationProperty Name="Goru_Stocks" Relationship="Self.FK_Goru_Main_Goru_Main" FromRole="Goru_Main" ToRole="Goru_Stocks" />
+    <NavigationProperty Name="Goru_Provider" Relationship="Self.FK_Goru_Main_Goru_Provider" FromRole="Goru_Main" ToRole="Goru_Provider" />
+    <NavigationProperty Name="Goru_Shipment" Relationship="Self.FK_Goru_Main_Goru_Shipment" FromRole="Goru_Main" ToRole="Goru_Shipment" />
+  </EntityType>
+  <EntityType Name="Goru_Provider">
+    <Key>
+      <PropertyRef Name="Goru_Provider_Id" />
+    </Key>
+    <Property Name="Goru_Provider_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Goru_Provider_Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goru_Provider_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goru_Provider_Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goru_Provider_Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goru_Provider_Quantity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goru_Provider_Name_Product" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Goru_Main" Relationship="Self.FK_Goru_Main_Goru_Provider" FromRole="Goru_Provider" ToRole="Goru_Main" />
+  </EntityType>
+  <EntityType Name="Goru_Shipment">
+    <Key>
+      <PropertyRef Name="Goru_Shipment_Id" />
+    </Key>
+    <Property Name="Goru_Shipment_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Goru_Shipment_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goru_Shipment_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goru_Shipment_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goru_Shipment_Box" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Goru_Main" Relationship="Self.FK_Goru_Main_Goru_Shipment" FromRole="Goru_Shipment" ToRole="Goru_Main" />
+  </EntityType>
+  <EntityType Name="Goru_Stocks">
+    <Key>
+      <PropertyRef Name="Goru_Stocks_Id" />
+    </Key>
+    <Property Name="Goru_Stocks_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Goru_Stocks_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goru_Stocks_Article" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goru_Stocks_Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goru_Stocks_Count" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goru_Stocks_Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goru_Stocks_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goru_Stocks_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goru_Stocks_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Goru_Main" Relationship="Self.FK_Goru_Main_Goru_Main" FromRole="Goru_Stocks" ToRole="Goru_Main" />
+  </EntityType>
+  <EntityType Name="Goru_User">
+    <Key>
+      <PropertyRef Name="Goru_User_Id" />
+    </Key>
+    <Property Name="Goru_User_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Goru_User_Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Goru_User_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Goru_Main_Goru_Admission">
+    <End Role="Goru_Admission" Type="Self.Goru_Admission" Multiplicity="0..1" />
+    <End Role="Goru_Main" Type="Self.Goru_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goru_Admission">
+        <PropertyRef Name="Goru_Admission_Id" />
+      </Principal>
+      <Dependent Role="Goru_Main">
+        <PropertyRef Name="Goru_Admission_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Goru_Main_Goru_Main">
+    <End Role="Goru_Stocks" Type="Self.Goru_Stocks" Multiplicity="0..1" />
+    <End Role="Goru_Main" Type="Self.Goru_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goru_Stocks">
+        <PropertyRef Name="Goru_Stocks_Id" />
+      </Principal>
+      <Dependent Role="Goru_Main">
+        <PropertyRef Name="Goru_Stocks_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Goru_Main_Goru_Provider">
+    <End Role="Goru_Provider" Type="Self.Goru_Provider" Multiplicity="0..1" />
+    <End Role="Goru_Main" Type="Self.Goru_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goru_Provider">
+        <PropertyRef Name="Goru_Provider_Id" />
+      </Principal>
+      <Dependent Role="Goru_Main">
+        <PropertyRef Name="Goru_Provider_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Goru_Main_Goru_Shipment">
+    <End Role="Goru_Shipment" Type="Self.Goru_Shipment" Multiplicity="0..1" />
+    <End Role="Goru_Main" Type="Self.Goru_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goru_Shipment">
+        <PropertyRef Name="Goru_Shipment_Id" />
+      </Principal>
+      <Dependent Role="Goru_Main">
+        <PropertyRef Name="Goru_Shipment_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GoruEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Goru_Admission" EntityType="Self.Goru_Admission" />
+    <EntitySet Name="Goru_Main" EntityType="Self.Goru_Main" />
+    <EntitySet Name="Goru_Provider" EntityType="Self.Goru_Provider" />
+    <EntitySet Name="Goru_Shipment" EntityType="Self.Goru_Shipment" />
+    <EntitySet Name="Goru_Stocks" EntityType="Self.Goru_Stocks" />
+    <EntitySet Name="Goru_User" EntityType="Self.Goru_User" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_Goru_Main_Goru_Admission" Association="Self.FK_Goru_Main_Goru_Admission">
+      <End Role="Goru_Admission" EntitySet="Goru_Admission" />
+      <End Role="Goru_Main" EntitySet="Goru_Main" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Goru_Main_Goru_Main" Association="Self.FK_Goru_Main_Goru_Main">
+      <End Role="Goru_Stocks" EntitySet="Goru_Stocks" />
+      <End Role="Goru_Main" EntitySet="Goru_Main" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Goru_Main_Goru_Provider" Association="Self.FK_Goru_Main_Goru_Provider">
+      <End Role="Goru_Provider" EntitySet="Goru_Provider" />
+      <End Role="Goru_Main" EntitySet="Goru_Main" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Goru_Main_Goru_Shipment" Association="Self.FK_Goru_Main_Goru_Shipment">
+      <End Role="Goru_Shipment" EntitySet="Goru_Shipment" />
+      <End Role="Goru_Main" EntitySet="Goru_Main" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(GoruModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(GoruModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

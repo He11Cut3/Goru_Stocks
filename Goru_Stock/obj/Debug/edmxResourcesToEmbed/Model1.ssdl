@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище GoruModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Goru_Admission">
+    <Key>
+      <PropertyRef Name="Goru_Admission_Id" />
+    </Key>
+    <Property Name="Goru_Admission_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Goru_Admission_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goru_Admission_Number" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goru_Admission_Date" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goru_Admission_Box" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Goru_Main">
+    <Key>
+      <PropertyRef Name="Goru_Main_Id" />
+    </Key>
+    <Property Name="Goru_Main_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Goru_Stocks_Id" Type="int" />
+    <Property Name="Goru_Shipment_Id" Type="int" />
+    <Property Name="Goru_Admission_Id" Type="int" />
+    <Property Name="Goru_Provider_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="Goru_Provider">
+    <Key>
+      <PropertyRef Name="Goru_Provider_Id" />
+    </Key>
+    <Property Name="Goru_Provider_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Goru_Provider_Surname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goru_Provider_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goru_Provider_Patronymic" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goru_Provider_Location" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goru_Provider_Quantity" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goru_Provider_Name_Product" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Goru_Shipment">
+    <Key>
+      <PropertyRef Name="Goru_Shipment_Id" />
+    </Key>
+    <Property Name="Goru_Shipment_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Goru_Shipment_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goru_Shipment_Number" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goru_Shipment_Date" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goru_Shipment_Box" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Goru_Stocks">
+    <Key>
+      <PropertyRef Name="Goru_Stocks_Id" />
+    </Key>
+    <Property Name="Goru_Stocks_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Goru_Stocks_Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goru_Stocks_Article" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goru_Stocks_Price" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goru_Stocks_Count" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goru_Stocks_Description" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goru_Stocks_Date" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goru_Stocks_Number" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goru_Stocks_Status" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Goru_User">
+    <Key>
+      <PropertyRef Name="Goru_User_Id" />
+    </Key>
+    <Property Name="Goru_User_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Goru_User_Login" Type="nvarchar" MaxLength="50" />
+    <Property Name="Goru_User_Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Goru_Main_Goru_Admission">
+    <End Role="Goru_Admission" Type="Self.Goru_Admission" Multiplicity="0..1" />
+    <End Role="Goru_Main" Type="Self.Goru_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goru_Admission">
+        <PropertyRef Name="Goru_Admission_Id" />
+      </Principal>
+      <Dependent Role="Goru_Main">
+        <PropertyRef Name="Goru_Admission_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Goru_Main_Goru_Main">
+    <End Role="Goru_Stocks" Type="Self.Goru_Stocks" Multiplicity="0..1" />
+    <End Role="Goru_Main" Type="Self.Goru_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goru_Stocks">
+        <PropertyRef Name="Goru_Stocks_Id" />
+      </Principal>
+      <Dependent Role="Goru_Main">
+        <PropertyRef Name="Goru_Stocks_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Goru_Main_Goru_Provider">
+    <End Role="Goru_Provider" Type="Self.Goru_Provider" Multiplicity="0..1" />
+    <End Role="Goru_Main" Type="Self.Goru_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goru_Provider">
+        <PropertyRef Name="Goru_Provider_Id" />
+      </Principal>
+      <Dependent Role="Goru_Main">
+        <PropertyRef Name="Goru_Provider_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Goru_Main_Goru_Shipment">
+    <End Role="Goru_Shipment" Type="Self.Goru_Shipment" Multiplicity="0..1" />
+    <End Role="Goru_Main" Type="Self.Goru_Main" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Goru_Shipment">
+        <PropertyRef Name="Goru_Shipment_Id" />
+      </Principal>
+      <Dependent Role="Goru_Main">
+        <PropertyRef Name="Goru_Shipment_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="Хранилище GoruModelContainer">
+    <EntitySet Name="Goru_Admission" EntityType="Self.Goru_Admission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Goru_Main" EntityType="Self.Goru_Main" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Goru_Provider" EntityType="Self.Goru_Provider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Goru_Shipment" EntityType="Self.Goru_Shipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Goru_Stocks" EntityType="Self.Goru_Stocks" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Goru_User" EntityType="Self.Goru_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Goru_Main_Goru_Admission" Association="Self.FK_Goru_Main_Goru_Admission">
+      <End Role="Goru_Admission" EntitySet="Goru_Admission" />
+      <End Role="Goru_Main" EntitySet="Goru_Main" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Goru_Main_Goru_Main" Association="Self.FK_Goru_Main_Goru_Main">
+      <End Role="Goru_Stocks" EntitySet="Goru_Stocks" />
+      <End Role="Goru_Main" EntitySet="Goru_Main" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Goru_Main_Goru_Provider" Association="Self.FK_Goru_Main_Goru_Provider">
+      <End Role="Goru_Provider" EntitySet="Goru_Provider" />
+      <End Role="Goru_Main" EntitySet="Goru_Main" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Goru_Main_Goru_Shipment" Association="Self.FK_Goru_Main_Goru_Shipment">
+      <End Role="Goru_Shipment" EntitySet="Goru_Shipment" />
+      <End Role="Goru_Main" EntitySet="Goru_Main" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

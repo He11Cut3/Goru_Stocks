@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище GoruModelContainer" CdmEntityContainer="GoruEntities">
+    <EntitySetMapping Name="Goru_Admission">
+      <EntityTypeMapping TypeName="GoruModel.Goru_Admission">
+        <MappingFragment StoreEntitySet="Goru_Admission">
+          <ScalarProperty Name="Goru_Admission_Id" ColumnName="Goru_Admission_Id" />
+          <ScalarProperty Name="Goru_Admission_Name" ColumnName="Goru_Admission_Name" />
+          <ScalarProperty Name="Goru_Admission_Number" ColumnName="Goru_Admission_Number" />
+          <ScalarProperty Name="Goru_Admission_Date" ColumnName="Goru_Admission_Date" />
+          <ScalarProperty Name="Goru_Admission_Box" ColumnName="Goru_Admission_Box" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goru_Main">
+      <EntityTypeMapping TypeName="GoruModel.Goru_Main">
+        <MappingFragment StoreEntitySet="Goru_Main">
+          <ScalarProperty Name="Goru_Main_Id" ColumnName="Goru_Main_Id" />
+          <ScalarProperty Name="Goru_Stocks_Id" ColumnName="Goru_Stocks_Id" />
+          <ScalarProperty Name="Goru_Shipment_Id" ColumnName="Goru_Shipment_Id" />
+          <ScalarProperty Name="Goru_Admission_Id" ColumnName="Goru_Admission_Id" />
+          <ScalarProperty Name="Goru_Provider_Id" ColumnName="Goru_Provider_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goru_Provider">
+      <EntityTypeMapping TypeName="GoruModel.Goru_Provider">
+        <MappingFragment StoreEntitySet="Goru_Provider">
+          <ScalarProperty Name="Goru_Provider_Id" ColumnName="Goru_Provider_Id" />
+          <ScalarProperty Name="Goru_Provider_Surname" ColumnName="Goru_Provider_Surname" />
+          <ScalarProperty Name="Goru_Provider_Name" ColumnName="Goru_Provider_Name" />
+          <ScalarProperty Name="Goru_Provider_Patronymic" ColumnName="Goru_Provider_Patronymic" />
+          <ScalarProperty Name="Goru_Provider_Location" ColumnName="Goru_Provider_Location" />
+          <ScalarProperty Name="Goru_Provider_Quantity" ColumnName="Goru_Provider_Quantity" />
+          <ScalarProperty Name="Goru_Provider_Name_Product" ColumnName="Goru_Provider_Name_Product" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goru_Shipment">
+      <EntityTypeMapping TypeName="GoruModel.Goru_Shipment">
+        <MappingFragment StoreEntitySet="Goru_Shipment">
+          <ScalarProperty Name="Goru_Shipment_Id" ColumnName="Goru_Shipment_Id" />
+          <ScalarProperty Name="Goru_Shipment_Name" ColumnName="Goru_Shipment_Name" />
+          <ScalarProperty Name="Goru_Shipment_Number" ColumnName="Goru_Shipment_Number" />
+          <ScalarProperty Name="Goru_Shipment_Date" ColumnName="Goru_Shipment_Date" />
+          <ScalarProperty Name="Goru_Shipment_Box" ColumnName="Goru_Shipment_Box" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goru_Stocks">
+      <EntityTypeMapping TypeName="GoruModel.Goru_Stocks">
+        <MappingFragment StoreEntitySet="Goru_Stocks">
+          <ScalarProperty Name="Goru_Stocks_Id" ColumnName="Goru_Stocks_Id" />
+          <ScalarProperty Name="Goru_Stocks_Name" ColumnName="Goru_Stocks_Name" />
+          <ScalarProperty Name="Goru_Stocks_Article" ColumnName="Goru_Stocks_Article" />
+          <ScalarProperty Name="Goru_Stocks_Price" ColumnName="Goru_Stocks_Price" />
+          <ScalarProperty Name="Goru_Stocks_Count" ColumnName="Goru_Stocks_Count" />
+          <ScalarProperty Name="Goru_Stocks_Description" ColumnName="Goru_Stocks_Description" />
+          <ScalarProperty Name="Goru_Stocks_Date" ColumnName="Goru_Stocks_Date" />
+          <ScalarProperty Name="Goru_Stocks_Number" ColumnName="Goru_Stocks_Number" />
+          <ScalarProperty Name="Goru_Stocks_Status" ColumnName="Goru_Stocks_Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goru_User">
+      <EntityTypeMapping TypeName="GoruModel.Goru_User">
+        <MappingFragment StoreEntitySet="Goru_User">
+          <ScalarProperty Name="Goru_User_Id" ColumnName="Goru_User_Id" />
+          <ScalarProperty Name="Goru_User_Login" ColumnName="Goru_User_Login" />
+          <ScalarProperty Name="Goru_User_Password" ColumnName="Goru_User_Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="GoruModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище GoruModel.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище GoruModel.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище GoruModel.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище GoruModel.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoruModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище GoruModel.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GoruModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище GoruModel.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище GoruModel.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>
